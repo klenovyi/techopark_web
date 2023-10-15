@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+<head>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
+    <link href="../static/css/registration.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Ask about football</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="ask" placeholder="Search" aria-label="Search"
+                               style="width: 400px">
+                        <button class="btn btn-outline-primary" type="submit">Ask</button>
+                    </form>
+                </div>
+            </nav>
+            <div class="container-fluid nav-avatar">
+                <a class="navbar-brand " href="#">
+                    <img src="../static/img/ronaldo.jpeg" alt="Logo" width="60" height="40"
+                         class="d-inline-block align-text-top">
+                </a>
+                <a class="navbar-brand">A.Y. Pakhomov</a>
+                <a class="navbar-brand" href="#">settings</a>
+                <a class="navbar-brand" href="#">log out</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0 main">
+    <h1>
+        New question
+    </h1>
+    <div class="row ">
+        <div class="col-8 ">
+            <form method="post" action="#" class="needs-validation" novalidate>
+                <div class="input">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title"
+                           placeholder="Ankara Messi Ankara Messi Ankara Messi Goal goal goal!"
+                           value="" required>
+                    <div class="invalid-feedback">
+                        Title is required!
+                    </div>
+                </div>
+                <div class=" input">
+                    <label for="form-label">Text</label>
+                    <textarea class="form-control align-content-lg-start" id="textArea" rows="10" required>At international level, Mbappé made his senior debut for France in 2017, at age of 18. At the 2018 FIFA World Cup, Mbappé became the youngest French player to score at a World Cup, as well as the second teenager, after Pelé, to score in a World Cup Final. He finished as the joint second-highest goalscorer as France won the tournament; he went on to win the FIFA World Cup Best Young Player and French Player of the Year awards for his performances. At the 2022 FIFA World Cup, France reached the final again; Mbappé won the Golden Boot and Silver Ball and set the record for most goals scored in World Cup finals by scoring a hat-trick.
+                        </textarea>
+                    <div class="invalid-feedback">
+                        Text is required!
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="tags" class="form-label">Tags</label>
+                    <input type="tags" class="form-control" id="tags"
+                           value="" placeholder="World cup, Champion league" required>
+                    <div class="invalid-feedback">
+                        Tags is required!
+                    </div>
+                </div>
+                <button class="btn btn-outline-primary btn-lg" type="submit">Ask</button>
+            </form>
+        </div>
+        <div class="col-4 ">
+            <h1 style="margin-bottom: 20px"> Popular Tags</h1>
+            <div class="tags">
+                <a href="/" class="tag " style="color: orange"> World Cup</a>
+                <a href="/" class="tag"> Champion Cup</a>
+                <a href="/" class="tag" style="color: #20c997"> Europe League</a>
+                <a href="/" class="tag" style="color: coral"> Russian Premier League</a>
+                <a href="/" class="tag" style="color: #bb2d3b"> La Liga</a>
+                <a href="/" class="tag" style="color: firebrick;"> Bundesliga</a>
+                <a href="/" class="tag" style="color: purple"> FNL</a>
+            </div>
+            <h1 class="header" style="margin-bottom: 20px; margin-top: 20px"> Best Members</h1>
+            <div class="best-members">
+                <a href="/" class="tag"> World Cup</a>
+                <a href="/" class="tag"> Champion Cup</a>
+                <a href="/" class="tag"> Europe League</a>
+                <a href="/" class="tag"> Russian Premier League</a>
+                <a href="/" class="tag"> La Liga</a>
+                <a href="/" class="tag"> Bundesliga</a>
+                <a href="/" class="tag"> FNL</a>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+</body>
+</html>

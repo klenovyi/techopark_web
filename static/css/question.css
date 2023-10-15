@@ -1,0 +1,19 @@
+.full-question {
+    margin: 20px 40px 40px 0px;
+    padding: 10px 20px 10px 10px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-check{
+    align-self: self-end;
+}
+
+.text-area{
+    margin: 20px 40px 40px 0px;
+}
+

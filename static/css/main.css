@@ -1,0 +1,68 @@
+.main{
+    margin: 20px 15px 15px 15px;
+}
+
+.nav-avatar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 100%;
+}
+
+
+a{
+    text-underline-mode: true;
+}
+
+.question{
+    margin: 40px 40px 40px 0px;
+    padding: 10px 20px 20px 10px;
+    border: 1px solid #0a53be;
+}
+
+.avatar{
+    width: 100%;
+}
+
+.like-info{
+    float: right;
+    margin-top: 30px;
+}
+
+.content-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.content-info p > a{
+     margin-right: 20px;
+}
+
+.content-info-tag{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.best-members{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tag{
+    font-size: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+
+
