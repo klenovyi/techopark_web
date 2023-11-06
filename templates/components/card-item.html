@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="col-3 ">
+    <img src="{% static 'img/1.jpg' %}" alt="Avatar" class="img-fluid rounded avatar">
+    <span class="like-info">
+                    <label class="like-label">{{ question.like }}</label>
+                    <button type="button" class="btn btn-outline-primary">Like</button>
+                    <button type="button" class="btn btn-outline-primary">Dislike</button>
+                </span>
+</div>
+<div class="col-9 content ">
+    <h2>
+        <a href="{% url 'question' question.id %}">{{ question.title }}</a>
+    </h2>
+    <p>
+        {{ question.content }}
+    </p>
+    <div class="row ">
+        <div class="col-3">
+            <a href="{% url 'question' question.id %}">answer(3)</a>
+        </div>
+        <div class="col-9 flex-wrap flex-row align-content-between content-info">
+            <span class="content-info-tag">Tags</span>
+            {% for tag in question.tags %}
+                <a href="{% url 'tag_questions' tag %}" class="content-info-tag">{{ tag }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

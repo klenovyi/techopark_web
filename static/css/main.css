@@ -2,18 +2,38 @@
     margin: 20px 15px 15px 15px;
 }
 
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+#best-members-header{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#popular-tags-header{
+    margin-bottom: 20px;
+}
+
+#hot-questions-header{
+    font-size: 60%;
+    margin-left: 20px;
+}
+
+.navbar{
+    background: #4d5154;
+}
+
 .nav-avatar{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 100px;
     margin-left: 10px;
     width: 100%;
-}
-
-
-a{
-    text-underline-mode: true;
 }
 
 .question{
@@ -28,22 +48,35 @@ a{
 
 .like-info{
     float: right;
-    margin-top: 30px;
+    margin-top: 10px;
+}
+
+.like-label{
+    border: 1px solid #0d6efd;
+    border-radius: 10%;
+    padding: 5px 10px 6px 10px;
+    color: #0d6efd;
 }
 
 .content-info{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-
-.content-info p > a{
-     margin-right: 20px;
+    margin: 0px -5px;
 }
 
 .content-info-tag{
+    flex: 1;
+    margin: 0px 5px;
+}
+
+.best-members{
+    display: flex;
+    flex-direction: column;
+}
+
+.member{
+    font-size: 20px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-top: 10px;
+    color: green;
 }
 
 .tags{
@@ -52,17 +85,9 @@ a{
     justify-content: flex-start;
 }
 
-.best-members{
-    display: flex;
-    flex-direction: column;
-}
-
-
 .tag{
     font-size: 20px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-top: 10px;
+    color: purple;
 }
-
-
-

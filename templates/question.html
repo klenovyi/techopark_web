@@ -1,186 +1,31 @@
-<!doctype html>
-<html lang="en" class="h-100" data-bs-theme="auto">
-<head>
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/main.css" rel="stylesheet">
-    <link href="../static/css/question.css" rel="stylesheet">
-</head>
+{% extends 'layouts/base.html' %}
+{% load static %}
 
-<body class="d-flex flex-column h-100">
+{% block links %}
+    <link href={% static 'css/question.css' %} rel="stylesheet">
+{% endblock %}
 
-<header>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Ask about football</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="ask" placeholder="Search" aria-label="Search"
-                               style="width: 400px">
-                        <button class="btn btn-outline-primary" type="submit">Ask</button>
-                    </form>
-                </div>
-            </nav>
-            <div class="container-fluid nav-avatar">
-                <a class="navbar-brand" href="#">log in</a>
-                <a class="navbar-brand" href="#">register</a>
-            </div>
-        </div>
-    </nav>
-</header>
+{% block title %}
+    Log in
+{% endblock %}
 
-<!-- Begin page content -->
-<main class="flex-shrink-0 main">
-    <div class="row ">
-        <div class="col-8 ">
-            <div class="row full-question">
-                <div class="col-4 ">
-                    <img src="../static/img/ronaldo.jpeg" alt="Avatar" class="img-fluid rounded avatar">
-                    <span class="like-info">
-                        <button type="button" class="btn btn-outline-primary">158</button>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
-                        <button type="button" class="btn btn-outline-primary">dislike</button>
-                    </span>
-                </div>
-                <div class="col-8 content">
-                    <h2>
-                        <a href="/">Cristiano Ronaldo is a best forward of all time !</a>
-                    </h2>
-                    <p>
-                        After a successful season with Sporting that brought the young player to the attention of
-                        Europe’s biggest football clubs, Ronaldo signed with English powerhouse Manchester United in
-                        2003. He was an instant sensation and soon came to be regarded as one of the best forwards in
-                        the game. His finest season with United came in 2007–08, when he scored 42 League and Cup goals
-                        and earned the Golden Shoe award as Europe’s leading scorer, with 31 League goals. After helping
-                        United to a Champions League title in May 2008, Ronaldo captured Fédération Internationale de
-                        Football Association (FIFA) World Player of the Year honours for his stellar 2007–08 season. He
-                        also led United to an appearance in the 2009 Champions League final, which they lost to FC
-                        Barcelona.
-
-                        Soon thereafter Ronaldo was sold to Spain’s Real Madrid—a club with which he had long been
-                        rumoured to want to play—for a then record £80 million (about $131 million) transfer fee. His
-                        scoring prowess continued with his new team, and he netted the most goals (40) in La Liga
-                        history during the 2010–11 season (his record was broken the following season by his rival
-                        Lionel Messi of Barcelona). In 2011–12 Ronaldo helped Madrid capture a La Liga championship and
-                        scored a personal-best 46 goals during the League season. He scored a total of 66 goals in 56
-                        appearances with Madrid and the Portuguese national team in 2013 to earn his second world player
-                        of the year award (the FIFA World Player of the Year was renamed the FIFA Ballon d’Or in 2010).
-                        In 2014 he scored 52 goals in 43 games and led Madrid to a Champions League title, which
-                        resulted in Ronaldo capturing another Ballon d’Or award. In 2014–15 he netted 48 goals to lead
-                        La Liga in scoring. Ronaldo netted his 324th goal as a member of Real in October 2015 to become
-                        the club’s all-time leading goal scorer. He scored 35 La Liga goals in 2015–16 and helped Real
-                        win its record 11th Champions League title, and in December 2016 he won a fourth career Ballon
-                        d’Or for his accomplishments. Ronaldo scored 42 goals for Real across all competitions in
-                        2016–17 and led his team to La Liga and Champions League titles that season, which resulted in a
-                        fifth career Ballon d’Or award. In 2017–18 he scored 44 goals in 44 games, and Real won a third
-                        straight Champions League title.
-                    </p>
-                    <div class="content-info">
-                        <p>
-                            Tags
-                            <a href="/" class="content-info-tag">World cup</a>
-                            <a href="/" class="content-info-tag">Golden ball</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="row question">
-                <div class="col-3 ">
-                    <img src="../static/img/messi.jpg" alt="Avatar" class="img-fluid rounded">
-                    <span class="like-info">
-                        <button type="button" class="btn btn-outline-primary">158</button>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
-                        <button type="button" class="btn btn-outline-primary">dislike</button>
-                    </span>
-                </div>
-                <div class="col-9 content">
-                    <p>
-                        Have you ever won a world cup ? I have !
-                    </p>
-                    <div class="content-check">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Correct
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row question">
-                <div class="col-3 ">
-                    <img src="../static/img/mbappe.jpg" alt="Avatar" class="img-fluid rounded">
-                    <span class="like-info">
-                        <button type="button" class="btn btn-outline-primary">158</button>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
-                        <button type="button" class="btn btn-outline-primary">dislike</button>
-                    </span>
-                </div>
-                <div class="col-9 content">
-                    <p>
-                        At international level, Mbappé made his senior debut for France in 2017, at age of 18. At the
-                        2018 FIFA World Cup, Mbappé became the youngest French player to score at a World Cup, as well
-                        as the second teenager, after Pelé, to score in a World Cup Final. He finished as the joint
-                        second-highest goalscorer as France won the tournament; he went on to win the FIFA World Cup
-                        Best Young Player and French Player of the Year awards for his performances. At the 2022 FIFA
-                        World Cup, France reached the final again; Mbappé won the Golden Boot and Silver Ball and set
-                        the record for most goals scored in World Cup finals by scoring a hat-trick.
-                    </p>
-                    <div class="content-check">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Correct
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-floating text-area">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                              style="height: 200px"></textarea>
-                <label for="floatingTextarea2">Comments</label>
-            </div>
-             <button type="button" class="btn btn-outline-primary" style="height: 50px; width: 150px;">Answer</button>
-        </div>
-        <div class="col-4 ">
-            <h1 style="margin-bottom: 20px"> Popular Tags</h1>
-            <div class="tags">
-                <a href="/" class="tag " style="color: orange"> World Cup</a>
-                <a href="/" class="tag"> Champion Cup</a>
-                <a href="/" class="tag" style="color: #20c997"> Europe League</a>
-                <a href="/" class="tag" style="color: coral"> Russian Premier League</a>
-                <a href="/" class="tag" style="color: #bb2d3b"> La Liga</a>
-                <a href="/" class="tag" style="color: firebrick;"> Bundesliga</a>
-                <a href="/" class="tag" style="color: purple"> FNL</a>
-            </div>
-            <h1 class="header" style="margin-bottom: 20px; margin-top: 20px"> Best Members</h1>
-            <div class="best-members">
-                <a href="/" class="tag"> World Cup</a>
-                <a href="/" class="tag"> Champion Cup</a>
-                <a href="/" class="tag"> Europe League</a>
-                <a href="/" class="tag"> Russian Premier League</a>
-                <a href="/" class="tag"> La Liga</a>
-                <a href="/" class="tag"> Bundesliga</a>
-                <a href="/" class="tag"> FNL</a>
-            </div>
-        </div>
+{% block content %}
+    <div class="row full-question">
+        {% include 'components/card-item.html' %}
     </div>
-</main>
-<footer>
-        <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
-</footer>
-
-
-</body>
-</html>
+    <hr>
+    {% for answer in page %}
+        <div class="row question">
+            {% include 'components/answer-item.html' %}
+        </div>
+    {% endfor %}
+    {% include 'components/pagination-item.html' %}
+    <hr>
+    <form action="{% url 'question' question.id %}" method="get">
+        <div class="form-floating text-area">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px; margin-top: 40px"></textarea>
+            <label for="floatingTextarea2">Comments</label>
+        </div>
+        <button type="submit" class="btn btn-outline-primary" style="height: 50px; width: 150px;">Answer</button>
+    </form>
+{% endblock %}

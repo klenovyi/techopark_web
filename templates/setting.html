@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link href="{% static '/css/registration.css' %}" rel="stylesheet">
+    <script type="text/javascript" src={% static "js/validation.js" %}></script>
+{% endblock %}
+
+{% block title %}
+    Settings: Andrey Pakhomov
+{% endblock %}
+
+{% block content %}
+    <form method="get" action="{% url 'index' %}" class="needs-validation" novalidate>
+        <div class="registration">
+
+            <div class="input ">
+                <label for="login" class="form-label">Login</label>
+                <input type="text" class="form-control" id="login" placeholder="Input login"
+                       value="Andrey Pakhomov" required>
+                <div class="invalid-feedback">
+                    Login is required.
+                </div>
+            </div>
+            <div class="input mb-3">
+                <label for="email" class="form-label">Email </label>
+                <input type="email" class="form-control" id="email" placeholder="input email"
+                       value="siropchyk17@gmail.com" required>
+                <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                </div>
+            </div>
+            <div class="input ">
+                <label for="nickName" class="form-label">NickName</label>
+                <input type="text" class="form-control" id="nickName" placeholder="input nickname"
+                       value="Klenovyi" required>
+                <div class="invalid-feedback">
+                    Valid nickname is required.
+                </div>
+            </div>
+            <div class="input">
+                <label for="avatar" class="form-label">Upload avatar</label>
+                <input type="file" class="form-control" id="avatar" placeholder="upload avatar"
+                       value="{% static 'img/3.jpg' %}">
+            </div>
+            <button class="btn btn-outline-primary btn-lg" type="submit">Save</button>
+        </div>
+    </form>
+{% endblock %}
+
+

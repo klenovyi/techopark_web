@@ -1,173 +1,20 @@
-<!doctype html>
-<html lang="en" class="h-100" data-bs-theme="auto">
-<head>
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/main.css" rel="stylesheet">
-</head>
+{% extends 'layouts/base.html' %}
 
-<body class="d-flex flex-column h-100">
+{% load static %}
 
-<header>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Ask about football</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="ask" placeholder="Search" aria-label="Search"
-                               style="width: 400px">
-                        <button class="btn btn-outline-primary" type="submit">Ask</button>
-                    </form>
-                </div>
-            </nav>
-            <div class="container-fluid nav-avatar">
-                <a class="navbar-brand " href="#">
-                    <img src="../static/img/ronaldo.jpeg" alt="Logo" width="60" height="40"
-                         class="d-inline-block align-text-top">
-                </a>
-                <a class="navbar-brand">A.Y. Pakhomov</a>
-                <a class="navbar-brand" href="#">settings</a>
-                <a class="navbar-brand" href="#">log out</a>
-            </div>
-        </div>
-    </nav>
-</header>
+{% block title %}
+    <a href="{% url 'index' %}">New questions</a>
+    <a id="hot-questions-header" href="{% url 'hot_questions' %}">Hot Questions</a>
+{% endblock %}
 
-<!-- Begin page content -->
-<main class="flex-shrink-0 main">
-    <h1>
-        New questions
-        <a href="/" style="font-size: 60%; margin-left: 20px">Hot Questions</a>
-    </h1>
-    <div class="row ">
-        <div class="col-8 ">
-            <div class="row question">
-                <div class="col-3 ">
-                    <img src="../static/img/ronaldo.jpeg" alt="Avatar" class="img-fluid rounded avatar">
-                    <span class="like-info">
-                        <button type="button" class="btn btn-outline-primary">158</button>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
-                        <button type="button" class="btn btn-outline-primary">dislike</button>
-                    </span>
-                </div>
-                <div class="col-9 content">
-                    <h2>
-                        <a href="/">Cristiano Ronaldo is a best forward of all time !</a>
-                    </h2>
-                    <p>
-                        After a successful season with Sporting that brought the young player to the attention of
-                        Europe’s biggest football clubs, Ronaldo signed with English powerhouse Manchester United in
-                        2003. He was an instant sensation and soon came to be regarded as one of the best forwards in
-                        the game. His finest season with United came in 2007–08, when he scored 42 League and Cup goals
-                        and earned the Golden Shoe award as Europe’s leading scorer, with 31 League goals.
-                    </p>
-                     <div class="content-info">
-                        <p>
-                            <a href="/">answer(3)</a> Tags
-                            <a href="/" class="content-info-tag">World cup</a>
-                            <a href="/" class="content-info-tag">Golden ball</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row question">
-                <div class="col-3 ">
-                    <img src="../static/img/messi.jpg" alt="Avatar" class="img-fluid rounded avatar">
-                    <span class="like-info">
-                        <button type="button" class="btn btn-outline-primary">158</button>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
-                        <button type="button" class="btn btn-outline-primary">dislike</button>
-                    </span>
-                </div>
-                <div class="col-9 content" >
-                    <h2>
-                        <a href="/">Lionel Messi is a best forward of all time !</a>
-                    </h2>
-                    <p>
-                        After a successful season with Sporting that brought the young player to the attention of
-                        Europe’s biggest football clubs, Ronaldo signed with English powerhouse Manchester United in
-                        2003.
-                    </p>
-                    <div class="content-info">
-                        <p>
-                            <a href="/">answer(3)</a> Tags
-                            <a href="/" class="content-info-tag">World cup</a>
-                            <a href="/" class="content-info-tag">Golden ball</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row question">
-                <div class="col-3 ">
-                    <img src="../static/img/mbappe.jpg" alt="Avatar" class="img-fluid rounded avatar">
-                    <span class="like-info">
-                        <button type="button" class="btn btn-outline-primary">158</button>
-                        <button type="button" class="btn btn-outline-primary">Like</button>
-                        <button type="button" class="btn btn-outline-primary">dislike</button>
-                    </span>
-                </div>
-                <div class="col-9 content" >
-                    <h2>
-                        <a href="/">Kylian Mbappe is a best forward of all time !</a>
-                    </h2>
-                    <p>
-                        At international level, Mbappé made his senior debut for France in 2017, at age of 18. At the
-                        2018 FIFA World Cup, Mbappé became the youngest French player to score at a World Cup, as well
-                        as the second teenager, after Pelé, to score in a World Cup Final. He finished as the joint
-                        second-highest goalscorer as France won the tournament; he went on to win the FIFA World Cup
-                        Best Young Player and French Player of the Year awards for his performances. At the 2022 FIFA
-                        World Cup, France reached the final again; Mbappé won the Golden Boot and Silver Ball and set
-                        the record for most goals scored in World Cup finals by scoring a hat-trick.
-                    </p>
-                    <div class="content-info">
-                        <p>
-                            <a href="/">answer(3)</a> Tags
-                            <a href="/" class="content-info-tag">World cup</a>
-                            <a href="/" class="content-info-tag">Golden ball</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+{% block content %}
+    {% for question in page %}
+        <div class="row question">
+        {% include 'components/card-item.html' %}
         </div>
-        <div class="col-4 ">
-            <h1 style="margin-bottom: 20px"> Popular Tags</h1>
-            <div class="tags">
-                <a href="/" class="tag " style="color: orange"> World Cup</a>
-                <a href="/" class="tag"> Champion Cup</a>
-                <a href="/" class="tag" style="color: #20c997"> Europe League</a>
-                <a href="/" class="tag" style="color: coral"> Russian Premier League</a>
-                <a href="/" class="tag" style="color: #bb2d3b"> La Liga</a>
-                <a href="/" class="tag" style="color: firebrick;"> Bundesliga</a>
-                <a href="/" class="tag" style="color: purple"> FNL</a>
-            </div>
-            <h1 class="header" style="margin-bottom: 20px; margin-top: 20px"> Best Members</h1>
-            <div class="best-members">
-                <a href="/" class="tag"> World Cup</a>
-                <a href="/" class="tag"> Champion Cup</a>
-                <a href="/" class="tag"> Europe League</a>
-                <a href="/" class="tag"> Russian Premier League</a>
-                <a href="/" class="tag"> La Liga</a>
-                <a href="/" class="tag"> Bundesliga</a>
-                <a href="/" class="tag"> FNL</a>
-            </div>
-        </div>
-    </div>
-</main>
-<footer>
-        <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
-</footer>
-</body>
-</html>
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+    {%  include 'components/pagination-item.html' %}
+{% endblock %}
