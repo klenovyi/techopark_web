@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from app import views
-from django.urls import path
+from django.urls import path, re_path
 from app.views import handler404
 
 handler404 = handler404
@@ -28,7 +28,7 @@ urlpatterns = [
                   path('', views.index, name='index'),
                   path('hot/', views.hot_questions, name='hot_questions'),
                   path('tag/<str:tag_name>', views.tag_questions, name='tag_questions'),
-                  path('question/<int:question_id>', views.question, name='question'),
+                  re_path(r'question/(?P<question_id>[0-9]+)', views.question, name='question'),
                   path('ask/', views.ask, name='ask'),
                   path('login/', views.login, name='login'),
                   path('signup/', views.signup, name='signup'),
