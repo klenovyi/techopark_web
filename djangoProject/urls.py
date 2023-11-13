@@ -24,14 +24,14 @@ from app.views import handler404
 handler404 = handler404
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
-                  path('', views.index, name='index'),
-                  path('hot/', views.hot_questions, name='hot_questions'),
-                  path('tag/<str:tag_name>', views.tag_questions, name='tag_questions'),
-                  re_path(r'question/(?P<question_id>[0-9]+)', views.question, name='question'),
-                  path('ask/', views.ask, name='ask'),
-                  path('login/', views.login, name='login'),
-                  path('signup/', views.signup, name='signup'),
-                  path('setting/', views.setting, name='setting'),
-              ]
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('hot/', views.hot_questions, name='hot_questions'),
+    path('tag/<str:tag_name>', views.tag_questions, name='tag_questions'),
+    re_path(r'question/(?P<question_id>[0-9]+)', views.question, name='question'),
+    path('ask/', views.ask, name='ask'),
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('setting/', views.setting, name='setting'),
+]
 ## + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

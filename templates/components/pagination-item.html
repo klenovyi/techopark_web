@@ -12,7 +12,11 @@
                 <li class="page-item">
                     <a class="page-link active" href="?page={{ i }}">{{ i }}</a>
                 </li>
-            {% else %}
+            {% elif i == -1 %}
+                <li class="page-item disabled">
+                    <a class="page-link active" href="#">...</a>
+                </li>
+            {% else  %}
                 <li class="page-item">
                     <a class="page-link" href="?page={{ i }}">{{ i }}</a>
                 </li>

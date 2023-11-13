@@ -1,97 +1,24 @@
-from datetime import datetime
-from random import randint
+import logging
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import Sum
+from django.db.models import Count
+from django.db.models.functions import *
+
+logging.basicConfig(level=logging.INFO)
 
 
 # Create your models here.
 
 class QuestionManager(models.Manager):
-    def filter_by_question(self,question_id):
-        return self.filter(id=question_id).first()
+
     def filter_by_tag(self, tag_name):
         return self.filter(tags__name=tag_name)
 
     ## будем считать горячими вопросами  с более 300 лайков и 7 ответов, отсортируем по лайкам , далее ответам
     def filter_by_hot(self):
-        self.filter(like__like__gt=300, count_answers__gt=7)
-        return self.order_by("-like__like", "-count_answers")
-
-    def first_fill_db(self, question_size, profile_size, like_size, tag_size):
-        questions = []
-        for i in range(question_size):
-            questions.append(Question(
-                profile_id=randint(1, profile_size),
-                title=f' question title {i + 1}',
-                content=f'question content {i + 1}',
-                published_date=datetime.today(),
-                like_id=randint(1, like_size),
-                count_answers=randint(0, 21)
-            ))
-        self.bulk_create(questions)
-        for q in Question.objects.all():
-            for _ in range(randint(0, 12)):
-                tag = Tag.objects.get(pk=randint(1, tag_size))
-                tag.questions.add(q)
-
-class AnswerManager(models.Manager):
-    def filter_by_question(self, question_id):
-        return self.filter(question__id=question_id)
-
-    def first_fill_db(self, profile_size, like_size, question_size):
-        answers = []
-        for q in Question.objects.all():
-            content = 1
-            for i in range(q.count_answers):
-                answers.append(Answer(
-                    profile_id=randint(1, profile_size),
-                    content=f"Answer content {content}",
-                    question=q,
-                    is_correct=randint(0, 1),
-                    published_date=datetime.today(),
-                    like_id=randint(1, like_size)
-                ))
-                content += 1
-        self.bulk_create(answers)
-
-
-class ProfileManager(models.Manager):
-    def first_fill_db(self, profile_size):
-        profiles = []
-        for i in range(profile_size):
-            u = User.objects.create_user(
-                username=f'username {i + 1}',
-                email=f'email@{i + 1}.com',
-                password=f'password {i + 1}'
-            )
-            profiles.append(Profile(
-                user=u,
-                nick_name=f'nickname {i + 1}'
-            ))
-        self.bulk_create(profiles)
-
-
-class TagManager(models.Manager):
-    def first_fill_db(self, tag_size):
-        tags = []
-        for i in range(tag_size):
-            tags.append(Tag(
-                id=i + 1,
-                name=f'tags {i + 1}'
-            ))
-        self.bulk_create(tags)
-
-
-class LikeManager(models.Manager):
-    def first_fill_db(self, like_size):
-        likes = []
-        for _ in range(like_size):
-            likes.append(Like(
-                like=randint(0, 1000),
-                dislike=randint(0, 500)
-            ))
-        self.bulk_create(likes)
+        return self.filter(like__rating__gt=300, count_answers__gt=7).order_by("-like__rating", "-count_answers")
 
 
 class Question(models.Model):
@@ -109,6 +36,11 @@ class Question(models.Model):
         ordering = ['-published_date']
 
 
+class AnswerManager(models.Manager):
+    def filter_by_question(self, question_id):
+        return self.filter(question__id=question_id)
+
+
 class Answer(models.Model):
     profile = models.ForeignKey('Profile', on_delete=models.PROTECT, related_name="answers")
     content = models.TextField()
@@ -119,18 +51,13 @@ class Answer(models.Model):
     objects = AnswerManager()
 
 
-class Tag(models.Model):
-    name = models.CharField(max_length=64)
-    objects = TagManager()
+class ProfileManager(models.Manager):
+    def best_members(self):
+        logging.info('before sql')
+        profiles = Question.objects.values('profile').annotate(rating=Sum('like__rating')).order_by('-rating')[0:10]
+        ids = list(map(lambda p: p['profile'], profiles))
+        return self.filter(id__in=ids)
 
-
-class Like(models.Model):
-    like = models.IntegerField()
-    dislike = models.IntegerField()
-    objects = LikeManager()
-
-    def __str__(self):
-        return str(self.like - self.dislike)
 
 
 class Profile(models.Model):
@@ -138,3 +65,32 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to="uploads/", null=True, blank=True)
     nick_name = models.CharField(max_length=128)
     objects = ProfileManager()
+
+    def __str__(self):
+        return self.user.username
+
+
+class TagManager(models.Manager):
+
+    def best_tags(self):
+        tags =  Question.objects.values('tags').annotate(Count('id')).order_by('-id__count')[0:10]
+        ids = list(map(lambda  t: t['tags'],tags))
+        logging.info(ids)
+        return Tag.objects.filter(id__in=ids)
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=64)
+    objects = TagManager()
+
+    def __str__(self):
+        return self.name
+
+
+class Like(models.Model):
+    like = models.IntegerField()
+    dislike = models.IntegerField()
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.rating)

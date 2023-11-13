@@ -3,7 +3,7 @@
 <div class="col-3 ">
     <img src="{% static 'img/1.jpg' %}" alt="Avatar" class="img-fluid rounded avatar">
     <span class="like-info">
-                    <label class="like-label">{{ question.like }}</label>
+                    <label class="like-label">{{ question.like.rating }}</label>
                     <button type="button" class="btn btn-outline-primary">Like</button>
                     <button type="button" class="btn btn-outline-primary">Dislike</button>
                 </span>
